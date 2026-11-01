@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080D18">
+<meta name="description" content="ANDREX | Empresario, creador de contenido y fundador de proyectos digitales.">
+<title>ANDREX | Portafolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #080D18;
+  --card: #101B2D;
+  --blue: #2563EB;
+  --light: #60A5FA;
+  --white: #F1F5F9;
+  --muted: #94A3B8;
+  --border: rgba(96,165,250,.17);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+button { font-family: inherit; }
+
+::selection {
+  background: var(--blue);
+  color: white;
+}
+
+/* FONDO */
+
+.background {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(37,99,235,.15), transparent 38%),
+    radial-gradient(ellipse at 85% 80%, rgba(29,78,216,.12), transparent 38%),
+    #080D18;
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: .13;
+  background-image:
+    linear-gradient(rgba(96,165,250,.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(96,165,250,.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #60A5FA;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 12px #3B82F6;
+  animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  15% { opacity: .7; }
+  85% { opacity: .5; }
+  100% {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+
+.glow {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: rgba(37,99,235,.09);
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: -1;
+  animation: glowMove 12s ease-in-out infinite alternate;
+}
+
+.glow.one {
+  top: 5%;
+  left: -150px;
+}
+
+.glow.two {
+  bottom: 0;
+  right: -150px;
+  animation-delay: -5s;
+}
+
+@keyframes glowMove {
+  from { transform: translate(0,0) scale(1); }
+  to { transform: translate(100px,-70px) scale(1.3); }
+}
+
+/* NAVEGACIÓN */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(8,13,24,.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar {
+  max-width: 1150px;
+  margin: auto;
+  padding: 17px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  color: white;
+  cursor: pointer;
+}
+
+.logo span { color: var(--light); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--muted);
+  padding: 10px 13px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.nav-btn:hover,
+.nav-btn.active {
+  color: white;
+  background: rgba(37,99,235,.15);
+  border-color: var(--border);
+  box-shadow: 0 0 18px rgba(37,99,235,.12);
+}
+
+.nav-btn.active { color: var(--light); }
+
+/* CONTENIDO */
+
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 35px 24px 65px;
+  min-height: 78vh;
+}
+
+.page {
+  display: none;
+  animation: pageEnter .55s ease both;
+}
+
+.page.active { display: block; }
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.eyebrow {
+  color: var(--light);
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 27px;
+  height: 2px;
+  background: var(--blue);
+  box-shadow: 0 0 10px var(--blue);
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(38px, 7vw, 65px);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: .98;
+  letter-spacing: -.5px;
+  margin-bottom: 18px;
+}
+
+.section-title span { color: var(--light); }
+
+.section-description {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 680px;
+}
+
+.section-heading { margin: 20px 0 35px; }
+
+/* INICIO */
+
+.hero {
+  min-height: 68vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 35px 0;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  width: fit-content;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: rgba(37,99,235,.08);
+  color: var(--light);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 27px;
+  animation: fadeUp .8s ease both;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #3B82F6;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #3B82F6;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .35; transform: scale(.7); }
+}
+
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(75px, 16vw, 155px);
+  line-height: .82;
+  font-weight: 900;
+  letter-spacing: -4px;
+  animation: fadeUp .8s .1s ease both;
+}
+
+.hero h1 span {
+  color: var(--light);
+  text-shadow: 0 0 40px rgba(37,99,235,.25);
+}
+
+.hero-subtitle {
+  color: #C5D3E6;
+  font-size: clamp(14px, 2vw, 18px);
+  margin-top: 28px;
+  letter-spacing: 1px;
+  animation: fadeUp .8s .2s ease both;
+}
+
+.hero-description {
+  color: var(--muted);
+  max-width: 570px;
+  line-height: 1.9;
+  font-size: 14px;
+  margin-top: 13px;
+  animation: fadeUp .8s .3s ease both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  animation: fadeUp .8s .4s ease both;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: rgba(37,99,235,.15);
+  color: white;
+  padding: 13px 19px;
+  border-radius: 6px;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  transition: .3s;
+  text-decoration: none;
+}
+
+.btn.primary {
+  background: var(--blue);
+  border-color: var(--blue);
+  box-shadow: 0 5px 25px rgba(37,99,235,.2);
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(37,99,235,.3);
+  border-color: var(--light);
+}
+
+.hero-bottom {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 65px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.hero-bottom-line {
+  height: 1px;
+  width: 45px;
+  background: var(--blue);
+}
+
+/* ESTADÍSTICAS */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 14px;
+  margin: 15px 0 40px;
+}
+
+.stat-card {
+  background: rgba(16,27,45,.7);
+  border: 1px solid var(--border);
+  padding: 23px;
+  border-radius: 10px;
+  transition: .3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(96,165,250,.5);
+}
+
+.stat-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 39px;
+  font-weight: 900;
+  color: var(--light);
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+
+/* PROYECTOS */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  padding: 25px;
+  background: linear-gradient(145deg, #101B2D, #0B1322);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: .35s;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--light);
+  box-shadow: 0 0 15px var(--blue);
+  transition: .4s;
+}
+
+.project-card:hover::before { width: 100%; }
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(96,165,250,.45);
+  box-shadow: 0 15px 40px rgba(0,0,0,.2);
+}
+
+.project-icon {
+  font-size: 25px;
+  margin-bottom: 20px;
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(37,99,235,.13);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+}
+
+.project-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 25px;
+  letter-spacing: .5px;
+  margin-bottom: 9px;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.project-tag {
+  display: inline-block;
+  margin-top: 17px;
+  color: var(--light);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* QUIÉN SOY */
+
+.about-box {
+  background: linear-gradient(135deg, rgba(16,27,45,.9), rgba(10,20,36,.8));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(22px,5vw,40px);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-box::after {
+  content: "A";
+  position: absolute;
+  right: -15px;
+  bottom: -100px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 300px;
+  font-weight: 900;
+  color: rgba(96,165,250,.035);
+  pointer-events: none;
+}
+
+.about-box p {
+  position: relative;
+  z-index: 1;
+  color: #B5C4D8;
+  font-size: 14px;
+  line-height: 2;
+  margin-top: 17px;
+  max-width: 750px;
+}
+
+.about-box strong { color: white; }
+
+.quote {
+  border-left: 3px solid var(--blue);
+  padding: 12px 18px;
+  margin-top: 27px;
+  color: var(--light);
+  font-weight: 700;
+  font-size: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ESPECIALIDADES */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 14px;
+}
+
+.skill-card {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 22px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: rgba(16,27,45,.72);
+  transition: .3s;
+}
+
+.skill-card:hover {
+  transform: translateX(5px);
+  border-color: rgba(96,165,250,.45);
+  background: rgba(24,43,70,.8);
+}
+
+.skill-icon {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(37,99,235,.14);
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.skill-card h3 {
+  font-size: 14px;
+  margin: 2px 0 8px;
+}
+
+.skill-card p {
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--muted);
+}
+
+/* CRÉDITOS */
+
+.credit-card {
+  max-width: 600px;
+  padding: 35px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: linear-gradient(145deg, #101B2D, #0A1423);
+  text-align: center;
+  margin-top: 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.credit-symbol {
+  font-size: 38px;
+  margin-bottom: 18px;
+  color: var(--light);
+}
+
+.credit-card h3 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+}
+
+.credit-name {
+  color: var(--light);
+  font-size: 17px;
+  font-weight: 800;
+  margin: 12px 0;
+}
+
+.credit-card p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.copy-btn {
+  background: rgba(37,99,235,.15);
+  border: 1px solid var(--border);
+  color: var(--light);
+  padding: 11px 17px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 11px;
+  transition: .3s;
+}
+
+.copy-btn:hover {
+  background: var(--blue);
+  color: white;
+}
+
+/* RELOJ Y PIE */
+
+.clock-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(16,27,45,.6);
+  padding: 17px 20px;
+  margin-top: 30px;
+}
+
+.clock-label {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+#clock {
+  color: var(--light);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 27px;
+  font-weight: 800;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 20px;
+  text-align: center;
+  color: #64748B;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+footer span { color: var(--light); }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: .7s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MÓVILES */
+
+@media(max-width:700px) {
+  .navbar {
+    flex-direction: column;
+    gap: 12px;
+    padding: 13px 10px;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 3px;
+  }
+
+  .nav-btn {
+    padding: 9px 8px;
+    font-size: 10px;
+  }
+
+  main { padding: 25px 17px 45px; }
+
+  .hero { min-height: 60vh; }
+
+  .hero h1 { letter-spacing: -2px; }
+
+  .projects-grid,
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats { gap: 8px; }
+
+  .stat-card { padding: 15px 10px; }
+
+  .stat-number { font-size: 30px; }
+
+  .stat-label { font-size: 8px; }
+
+  .hero-bottom { margin-top: 45px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+<div class="grid-bg"></div>
+<div class="glow one"></div>
+<div class="glow two"></div>
+<div id="particles"></div>
+
+<header>
+<nav class="navbar">
+  <div class="logo" onclick="showPage('inicio')">ANDREX<span>.</span></div>
+
+  <div class="nav-links">
+    <button class="nav-btn active" data-page="inicio" onclick="showPage('inicio')">INICIO</button>
+    <button class="nav-btn" data-page="proyectos" onclick="showPage('proyectos')">PROYECTOS</button>
+    <button class="nav-btn" data-page="sobremi" onclick="showPage('sobremi')">QUIÉN SOY</button>
+    <button class="nav-btn" data-page="dedico" onclick="showPage('dedico')">A QUÉ ME DEDICO</button>
+    <button class="nav-btn" data-page="creditos" onclick="showPage('creditos')">CRÉDITOS</button>
+  </div>
+</nav>
+</header>
+
+<main>
+
+<!-- INICIO -->
+
+<section class="page active" id="inicio">
+
+  <div class="hero">
+
+    <div class="hero-tag">
+      <span class="status-dot"></span>
+      PORTAFOLIO PERSONAL · COLOMBIA 🇨🇴
+    </div>
+
+    <h1>ANDRE<span>X.</span></h1>
+
+    <div class="hero-subtitle">
+      EMPRESARIO · CREADOR DIGITAL · FUNDADOR
+    </div>
+
+    <p class="hero-description">
+      Bienvenido a mi espacio digital. Aquí podrás conocer quién soy,
+      descubrir mis proyectos y explorar las diferentes áreas en las
+      que trabajo. Esto es solo una parte de todo lo que viene.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn primary" onclick="showPage('proyectos')">
+        EXPLORAR PROYECTOS ↗
+      </button>
+
+      <button class="btn" onclick="showPage('sobremi')">
+        CONÓCEME →
+      </button>
+    </div>
+
+    <div class="hero-bottom">
+      <span class="hero-bottom-line"></span>
+      IDEAS · VISIÓN · RESULTADOS
+    </div>
+
+  </div>
+
+  <div class="stats">
+
+    <div class="stat-card">
+      <div class="stat-number counter" data-target="5">0</div>
+      <div class="stat-label">Proyectos mencionados</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number counter" data-target="6">0</div>
+      <div class="stat-label">Áreas de trabajo</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-number">∞</div>
+      <div class="stat-label">Ideas por desarrollar</div>
+    </div>
+
+  </div>
+
+  <div class="clock-box">
+    <div>
+      <div class="clock-label">HORA ACTUAL · COLOMBIA</div>
+      <div id="clock">00:00:00</div>
+    </div>
+    <div class="clock-label">EL FUTURO SE CONSTRUYE. ⚡</div>
+  </div>
+
+</section>
+
+<!-- PROYECTOS -->
+
+<section class="page" id="proyectos">
+
+  <div class="section-heading">
+    <div class="eyebrow">MIS PROYECTOS</div>
+
+    <h2 class="section-title">
+      IDEAS QUE SE<br>
+      <span>CONVIERTEN EN REALIDAD.</span>
+    </h2>
+
+    <p class="section-description">
+      Cada proyecto representa una idea, una visión y un nuevo desafío.
+      Estos son algunos de los proyectos que forman parte de mi recorrido.
+    </p>
+  </div>
+
+  <div class="projects-grid">
+
+    <article class="project-card reveal">
+      <div class="project-icon">🏢</div>
+      <h3>LA OFICINA RP</h3>
+      <p>
+        Un proyecto enfocado en el mundo del Roleplay y el entretenimiento.
+        Una comunidad construida alrededor de nuevas experiencias.
+      </p>
+      <div class="project-tag">ROLEPLAY · COMUNIDAD</div>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-icon">🌐</div>
+      <h3>WEBLUM</h3>
+      <p>
+        Un proyecto relacionado con el mundo digital y la creación web.
+        Parte de mi visión de desarrollar nuevas soluciones.
+      </p>
+      <div class="project-tag">TECNOLOGÍA · DIGITAL</div>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-icon">💼</div>
+      <h3>©AZARØ</h3>
+      <p>
+        Mi compañía, una parte importante de mi visión empresarial
+        y de los proyectos que quiero llevar adelante.
+      </p>
+      <div class="project-tag">EMPRESA · MARCA</div>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-icon">🎬</div>
+      <h3>ERROR 404</h3>
+      <p>
+        Una serie creada por mí. Un proyecto audiovisual que forma
+        parte de mis ideas y mi creatividad.
+      </p>
+      <div class="project-tag">SERIE · ENTRETENIMIENTO</div>
+    </article>
+
+    <article class="project-card reveal">
+      <div class="project-icon">📺</div>
+      <h3>MONIGOTE TV</h3>
+      <p>
+        Otro de los proyectos que forman parte de mi recorrido
+        y de las ideas que quiero desarrollar.
+      </p>
+      <div class="project-tag">CONTENIDO · PROYECTO</div>
+    </article>
+
+  </div>
+
+  <div class="clock-box">
+    <div class="clock-label">CADA IDEA ES EL COMIENZO DE ALGO NUEVO.</div>
+    <button class="btn" onclick="showPage('inicio')">VOLVER AL INICIO ↑</button>
+  </div>
+
+</section>
+
+<!-- QUIÉN SOY -->
+
+<section class="page" id="sobremi">
+
+  <div class="section-heading">
+    <div class="eyebrow">QUIÉN SOY</div>
+
+    <h2 class="section-title">
+      DETRÁS DE<br>
+      <span>ANDREX.</span>
+    </h2>
+
+    <p class="section-description">
+      Conoce un poco más sobre la persona detrás de estos proyectos.
+    </p>
+  </div>
+
+  <div class="about-box reveal">
+
+    <div class="eyebrow">PRESENTACIÓN PERSONAL</div>
+
+    <h2 class="section-title" style="font-size:35px">
+      HOLA, SOY <span>ANDRÉS.</span>
+    </h2>
+
+    <p>
+      Mi nombre es <strong>Andrés</strong>. Soy un joven empresario y
+      creador de múltiples proyectos que buscan destacar en el mundo digital.
+    </p>
+
+    <p>
+      Soy creador de contenido, fundador de <strong>La Oficina RP</strong>
+      y <strong>Weblum</strong>, y dueño de la compañía
+      <strong>©AZARØ</strong>.
+    </p>
+
+    <p>
+      También soy el creador de la serie <strong>ERROR 404</strong>
+      y actualmente trabajo en nuevas ideas y proyectos que próximamente
+      verán la luz.
+    </p>
+
+    <p>
+      Me considero una persona creativa, emprendedora y apasionada
+      por convertir ideas en realidades. Siempre estoy buscando
+      nuevas oportunidades para crear algo diferente.
+    </p>
+
+    <div class="quote">
+      "El futuro no se espera, se construye."
+    </div>
+
+  </div>
+
+  <div class="clock-box">
+    <div class="clock-label">UNA VISIÓN. MUCHOS PROYECTOS. UN MISMO OBJETIVO.</div>
+    <button class="btn" onclick="showPage('inicio')">VOLVER AL INICIO ↑</button>
+  </div>
+
+</section>
+
+<!-- A QUÉ ME DEDICO -->
+
+<section class="page" id="dedico">
+
+  <div class="section-heading">
+    <div class="eyebrow">MI TRABAJO</div>
+
+    <h2 class="section-title">
+      MI MUNDO<br>
+      <span>DIGITAL.</span>
+    </h2>
+
+    <p class="section-description">
+      Me desempeño en diferentes áreas del mundo digital y empresarial.
+      Me gusta explorar nuevas oportunidades, desarrollar ideas y crear proyectos.
+    </p>
+  </div>
+
+  <div class="skills-grid">
+
+    <article class="skill-card reveal">
+      <div class="skill-icon">🌐</div>
+      <div>
+        <h3>Interventor digital</h3>
+        <p>Trabajo en diferentes áreas del entorno digital y sus proyectos.</p>
+      </div>
+    </article>
+
+    <article class="skill-card reveal">
+      <div class="skill-icon">🎥</div>
+      <div>
+        <h3>Creador de contenido</h3>
+        <p>Desarrollo ideas y contenido para diferentes plataformas digitales.</p>
+      </div>
+    </article>
+
+    <article class="skill-card reveal">
+      <div class="skill-icon">🤖</div>
+      <div>
+        <h3>Configurador de bots</h3>
+        <p>Configuración, personalización y organización de bots.</p>
+      </div>
+    </article>
+
+    <article class="skill-card reveal">
+      <div class="skill-icon">💻</div>
+      <div>
+        <h3>Desarrollador web</h3>
+        <p>Creación y diseño de páginas web y experiencias digitales.</p>
+      </div>
+    </article>
+
+    <article class="skill-card reveal">
+      <div class="skill-icon">💼</div>
+      <div>
+        <h3>Empresario</h3>
+        <p>Desarrollo y gestión de proyectos, ideas y compañías.</p>
+      </div>
+    </article>
+
+    <article class="skill-card reveal">
+      <div class="skill-icon">🚀</div>
+      <div>
+        <h3>Creador de proyectos</h3>
+        <p>Transformo ideas en proyectos con identidad y objetivos propios.</p>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="clock-box">
+    <div class="clock-label">CREATIVIDAD · TECNOLOGÍA · EMPRENDIMIENTO</div>
+    <button class="btn" onclick="showPage('inicio')">VOLVER AL INICIO ↑</button>
+  </div>
+
+</section>
+
+<!-- CRÉDITOS -->
+
+<section class="page" id="creditos">
+
+  <div class="section-heading">
+    <div class="eyebrow">AGRADECIMIENTOS</div>
+
+    <h2 class="section-title">
+      LAS PERSONAS<br>
+      <span>DETRÁS DEL PROYECTO.</span>
+    </h2>
+
+    <p class="section-description">
+      Todo proyecto tiene un proceso de creación. Este espacio
+      reconoce a quienes participaron en el desarrollo de esta web.
+    </p>
+  </div>
+
+  <div class="credit-card reveal">
+
+    <div class="credit-symbol">✦</div>
+
+    <div class="eyebrow" style="justify-content:center">
+      DESARROLLO WEB
+    </div>
+
+    <h3>CREADOR DEL PORTAFOLIO</h3>
+
+    <div class="credit-name">Ryan_lamineyamal</div>
+
+    <p>
+      Responsable de la configuración, estructura y diseño
+      de este portafolio.
+    </p>
+
+    <button class="copy-btn" onclick="copyCredit()">
+      📋 COPIAR USUARIO
+    </button>
+
+  </div>
+
+  <div class="clock-box">
+    <div class="clock-label">© ANDREX · TODOS LOS DERECHOS RESERVADOS.</div>
+    <button class="btn" onclick="showPage('inicio')">VOLVER AL INICIO ↑</button>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  © <span>ANDREX</span> · PORTAFOLIO PERSONAL · COLOMBIA 🇨🇴
+  <br><br>
+  DISEÑADO CON VISIÓN Y CREATIVIDAD.
+</footer>
+
+<script>
+
+/* CAMBIO DE PANTALLAS */
+
+function showPage(pageId) {
+
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+
+  document.querySelectorAll('.nav-btn').forEach(button => {
+    button.classList.remove('active');
+  });
+
+  const selectedPage = document.getElementById(pageId);
+
+  if (!selectedPage) return;
+
+  selectedPage.classList.add('active');
+
+  const activeButton = document.querySelector(
+    `.nav-btn[data-page="${pageId}"]`
+  );
+
+  if (activeButton) {
+    activeButton.classList.add('active');
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+
+  setTimeout(() => {
+    revealElements();
+    animateCounters();
+  }, 100);
+}
+
+/* PARTÍCULAS ANIMADAS */
+
+const particleContainer = document.getElementById('particles');
+
+for (let i = 0; i < 45; i++) {
+
+  const particle = document.createElement('span');
+
+  particle.className = 'particle';
+
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.top = (Math.random() * 100 + 100) + '%';
+  particle.style.animationDuration = (8 + Math.random() * 15) + 's';
+  particle.style.animationDelay = (Math.random() * 12) + 's';
+
+  const size = 2 + Math.random() * 3;
+
+  particle.style.width = size + 'px';
+  particle.style.height = size + 'px';
+
+  particleContainer.appendChild(particle);
+}
+
+/* RELOJ */
+
+function updateClock() {
+
+  const now = new Date();
+
+  const time = now.toLocaleTimeString('es-CO', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false,
+    timeZone: 'America/Bogota'
+  });
+
+  document.getElementById('clock').textContent = time;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+/* COPIAR CRÉDITO */
+
+async function copyCredit() {
+
+  const username = 'Ryan_lamineyamal';
+  const button = document.querySelector('.copy-btn');
+
+  try {
+    await navigator.clipboard.writeText(username);
+    button.textContent = '✓ ¡USUARIO COPIADO!';
+  } catch (error) {
+    button.textContent = username;
+  }
+
+  setTimeout(() => {
+    button.textContent = '📋 COPIAR USUARIO';
+  }, 2200);
+}
+
+/* APARICIÓN DE ELEMENTOS */
+
+function revealElements() {
+
+  const elements = document.querySelectorAll(
+    '.page.active .reveal'
+  );
+
+  elements.forEach((element, index) => {
+
+    element.classList.remove('show');
+
+    setTimeout(() => {
+      element.classList.add('show');
+    }, index * 100);
+
+  });
+}
+
+/* CONTADORES */
+
+function animateCounters() {
+
+  const activeCounters = document.querySelectorAll(
+    '#inicio.active .counter'
+  );
+
+  activeCounters.forEach(counter => {
+
+    if (counter.dataset.done === 'true') return;
+
+    counter.dataset.done = 'true';
+
+    const target = Number(counter.dataset.target);
+    const duration = 1200;
+    const start = performance.now();
+
+    function update(currentTime) {
+
+      const progress = Math.min(
+        (currentTime - start) / duration,
+        1
+      );
+
+      const eased = 1 - Math.pow(1 - progress, 3);
+
+      counter.textContent = Math.floor(target * eased);
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        counter.textContent = target + '+';
+      }
+    }
+
+    requestAnimationFrame(update);
+
+  });
+}
+
+/* INICIAR ANIMACIONES */
+
+revealElements();
+animateCounters();
+
+</script>
+
+</body>
+</html>
